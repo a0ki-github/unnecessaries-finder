@@ -23,3 +23,6 @@
 ## マーケット
 - 部屋の片付けで悩んでいる人。
 - 片付けられない人の説得に苦戦している人。
+
+## 画面遷移図
+[figma](https://www.figma.com/file/SkZ87GpVo4ktVJuib0XMVe/%E3%83%9F%E3%83%8B%E3%83%8F%E3%83%A9?node-id=0%3A1)
