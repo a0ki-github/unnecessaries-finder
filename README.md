@@ -28,4 +28,4 @@
 [figma](https://www.figma.com/file/SkZ87GpVo4ktVJuib0XMVe/%E3%83%9F%E3%83%8B%E3%83%8F%E3%83%A9?node-id=0%3A1)
 
 ## ER図
-[![Image from Gyazo](https://i.gyazo.com/ea4a25b3e0e01e9cdf724abbbcd94777.png)](https://gyazo.com/ea4a25b3e0e01e9cdf724abbbcd94777)
+[![Image from Gyazo](https://i.gyazo.com/0b8d3303e5dd6aa9d22b02d50750859a.png)](https://gyazo.com/0b8d3303e5dd6aa9d22b02d50750859a)
