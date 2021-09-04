@@ -31,4 +31,4 @@
 [![Image from Gyazo](https://i.gyazo.com/a9ae2fc435c839f3e2e11ddcc3bf9dff.png)](https://gyazo.com/a9ae2fc435c839f3e2e11ddcc3bf9dff)
 
 ## トップ画面
-[![Image from Gyazo](https://i.gyazo.com/bd0cebd200cdecf1e5130b2a1eafd68f.png)](https://gyazo.com/bd0cebd200cdecf1e5130b2a1eafd68f)
+[![Image from Gyazo](https://i.gyazo.com/991a6c488baaf189702d4fab56d92c5d.png)](https://gyazo.com/991a6c488baaf189702d4fab56d92c5d)
