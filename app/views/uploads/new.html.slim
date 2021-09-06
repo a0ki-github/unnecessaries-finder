@@ -1,2 +1,7 @@
 h1 Uploads#new
 p Find me in app/views/uploads/new.html.slim
+
+= form_with url: uploads_path do |f|
+  .form-group
+    = f.file_field :room_image
+    = f.button :submit
