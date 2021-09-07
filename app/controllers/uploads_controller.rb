@@ -10,6 +10,10 @@ class UploadsController < ApplicationController
     upload_file = params[:room_image]
     base64_image = Base64.strict_encode64(upload_file.read)
 
+    headers = {
+      "Content-Type" => "application/json"
+    }
+
     body = { 
       requests: [
         {
@@ -29,7 +33,7 @@ class UploadsController < ApplicationController
     response = Net::HTTP.post(
       URI('https://vision.googleapis.com/v1/images:annotate'),
       body,
-      "Content-Type" => "application/json"
+      headers
     )
 
     if response.code == '200'
