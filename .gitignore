@@ -75,6 +75,3 @@ yarn-debug.log*
 /yarn-error.log
 yarn-debug.log*
 .yarn-integrity
-
-# API key
-prefab-segment-325100-0421c24f2fef.json
