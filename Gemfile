@@ -57,4 +57,3 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'slim-rails'
 gem 'html2slim'
-gem 'google-cloud-vision', '~> 1.1', '>= 1.1.2'
