@@ -45,9 +45,9 @@ class UploadsController < ApplicationController
     # 検出したオブジェクト名の配列を作成
     array_of_items = JSON.parse(response.body)['responses'][0]["localizedObjectAnnotations"]
 
-    # array_of_items.map do |item|
-    #   Item.find_by(name: item)
-    # end
+    array_of_items.map do |item|
+      Item.find_by(name: item['name'])
+    end
 
   end
 
