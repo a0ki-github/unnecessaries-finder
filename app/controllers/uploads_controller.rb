@@ -33,6 +33,19 @@ class UploadsController < ApplicationController
       headers
     )
 
+    # 検出したオブジェクト名の配列を作成
+    array_of_items = JSON.parse(response.body)['responses'][0]["localizedObjectAnnotations"].map {|i| i['name']}
+
+    @judged_items = []
+    @unregistered_items = []
+    array_of_items.each do |item|
+      if Item.exists?(name: item)
+        @judged_items << item
+      else
+        @unregistered_items << item
+      end
+    end
+
     debugger
 
     if response.code == '200'
@@ -40,13 +53,6 @@ class UploadsController < ApplicationController
     else
       flash.now[:alert] = 'APIリクエストが失敗しています'
       render :new
-    end
-
-    # 検出したオブジェクト名の配列を作成
-    array_of_items = JSON.parse(response.body)['responses'][0]["localizedObjectAnnotations"]
-
-    array_of_items.map do |item|
-      Item.find_by(name: item['name'])
     end
 
   end
