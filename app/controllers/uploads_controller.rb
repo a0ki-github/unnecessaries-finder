@@ -52,7 +52,7 @@ class UploadsController < ApplicationController
         end
       end
     else
-      flash.now[:alert] = 'APIリクエストが失敗しています'
+      flash.now[:danger] = 'APIリクエストが失敗しています'
       render :new
     end
 
@@ -65,7 +65,7 @@ class UploadsController < ApplicationController
 
   def require_image
     if params[:room_image].nil?
-      flash[:notice] = '画像を登録してください'
+      flash.now[:danger] = '画像を登録してください'
       render :new
     end
   end
