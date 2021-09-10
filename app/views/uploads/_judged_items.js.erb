@@ -1,15 +1,11 @@
 <% if judged_items.present? %>
+  let div;
+  
   <% judged_items.each do |judged_item| %>
-    // Item.nameのHTML生成
-    let name = document.createElement("p");
-    name.innerText = "<%= judged_item %>";
-    document.querySelector(".judge").appendChild(name);
-
-    // Item.why_releaseのHTML生成
-    let content = document.createElement("p");
-    content.innerText = "<%= Item.find_by(name: judged_item).why_release %>";
-    document.querySelector(".judge").appendChild(content);
+    div = document.createElement("div");
+    div.innerHTML = "<p><%= judged_item %> <br> <%= Item.find_by(name: judged_item).why_release %> </p>";
+    document.querySelector(".judge").appendChild(div);
   <% end %>
 <% else %>
-  document.querySelector(".judge").innerText = '今回は判定できるモノがありませんでした。'
+  document.querySelector(".judge").innerText = '今回は判定できるモノがありませんでした。';
 <% end %>
