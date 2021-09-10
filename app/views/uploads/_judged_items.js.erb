@@ -1,0 +1,14 @@
+<% if judged_items.present? %>
+  <% judged_items.each do |judged_item| %>
+    let name = document.createElement("p");
+    let content = document.createElement("p");
+
+    name.innerText = "<%= judged_item %>";
+    content.innerText = "<%= Item.find_by(name: judged_item).why_release %>";
+
+    document.querySelector(".judge").appendChild(name);
+    document.querySelector(".judge").appendChild(content);
+  <% end %>
+<% else %>
+  document.querySelector(".judge").innerText = '今回は判定できるモノがありませんでした。'
+<% end %>
