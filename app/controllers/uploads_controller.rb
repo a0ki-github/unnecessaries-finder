@@ -33,10 +33,6 @@ class UploadsController < ApplicationController
       headers
     )
 
-    
-
-    debugger
-
     if response.code == '200'
       # 検出したオブジェクト名称の配列を作成
       array_of_items = JSON.parse(response.body)['responses'][0]["localizedObjectAnnotations"].map {|i| i['name']}
