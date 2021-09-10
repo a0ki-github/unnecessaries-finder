@@ -1,12 +1,13 @@
 <% if judged_items.present? %>
   <% judged_items.each do |judged_item| %>
+    // Item.nameのHTML生成
     let name = document.createElement("p");
-    let content = document.createElement("p");
-
     name.innerText = "<%= judged_item %>";
-    content.innerText = "<%= Item.find_by(name: judged_item).why_release %>";
-
     document.querySelector(".judge").appendChild(name);
+
+    // Item.why_releaseのHTML生成
+    let content = document.createElement("p");
+    content.innerText = "<%= Item.find_by(name: judged_item).why_release %>";
     document.querySelector(".judge").appendChild(content);
   <% end %>
 <% else %>
