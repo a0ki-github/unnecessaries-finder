@@ -34,19 +34,21 @@ class UploadsController < ApplicationController
     )
 
     if response.code == '200'
-      # 検出したオブジェクト名称の配列を作成
-      array_of_items = JSON.parse(response.body)['responses'][0]["localizedObjectAnnotations"].map {|i| i['name']}
+      # 検出されたオブジェクトの配列を作成
+      detected_items = JSON.parse(response.body)['responses'][0]["localizedObjectAnnotations"].map {|i| i['name']}
 
       # オブジェクト名称の登録有無による仕分け
       @judged_items = []
       @unregistered_items = []
-      array_of_items.each do |item|
-        if Item.exists?(name: item)
-          @judged_items << item
+
+      detected_items.each do |detected_item|
+        if Item.exists?(name: detected_item)
+          @judged_items << detected_item
         else
-          @unregistered_items << item
+          @unregistered_items << detected_item
         end
       end
+
     else
       flash.now[:danger] = 'APIリクエストが失敗しています'
       render :new
