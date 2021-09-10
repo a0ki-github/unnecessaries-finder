@@ -39,13 +39,13 @@ class UploadsController < ApplicationController
 
       # オブジェクト名称の登録有無による仕分け
       @judged_items = []
-      @unregistered_items = []
+      @unregd_items = []
 
       detected_items.each do |detected_item|
         if Item.exists?(name: detected_item)
           @judged_items << detected_item
         else
-          @unregistered_items << detected_item
+          @unregd_items << detected_item
         end
       end
 

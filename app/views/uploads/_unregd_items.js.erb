@@ -1,0 +1,5 @@
+<% unregd_items.each do |unregd_item| %>
+  li = document.createElement("li");
+  li.innerHTML = '<%= unregd_item %>';
+  document.querySelector(".unregd").appendChild(li);
+<% end %>
