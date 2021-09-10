@@ -1,3 +1,5 @@
 <% @unregistered_items.each do |unregistered_item| %>
-  document.querySelector("h1").innerText = "<%= unregistered_item %>";
+  li = document.createElement("li");
+  li.innerHTML = '<%= unregistered_item %>';
+  document.querySelector(".unregistered").appendChild(li);
 <% end %>
