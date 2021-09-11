@@ -11,7 +11,7 @@ class UploadsController < ApplicationController
     api_key = Rails.application.credentials.gcp[:vision_api][:api_key]
     headers = { "Content-Type" => "application/json" }
 
-    body = { 
+    body = {
       requests: [
         {
           features: [
@@ -52,9 +52,6 @@ class UploadsController < ApplicationController
       flash.now[:danger] = 'APIリクエストが失敗しています'
       render :new
     end
-  end
-
-  def show
   end
 
   private
