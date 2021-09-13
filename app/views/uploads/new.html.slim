@@ -6,7 +6,7 @@ p アイコンをタップして写真をアップロード
   .form-group
     = f.file_field :room_image, accept: 'image/*', onchange: 'submitImage()'
     = f.button :submit
-  img#preview
+  img#preview width="auto" height="500px"
 
 .result
   h3.headline
