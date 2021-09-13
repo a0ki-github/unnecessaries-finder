@@ -2,7 +2,7 @@ h1 タイトル
 p あなたの部屋の「実は要らないモノ」を診断できるアプリ
 
 p アイコンをタップして写真をアップロード
-= form_with url: uploads_path, local: false do |f|
+= form_with url: uploads_path, local: false, id: 'image_form' do |f|
   .form-group
     = f.file_field :room_image, accept: 'image/*', onchange: 'submitImage()'
     = f.button :submit
