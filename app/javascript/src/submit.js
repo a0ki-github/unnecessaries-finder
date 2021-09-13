@@ -1,0 +1,3 @@
+submitImage = () => {
+  console.log('hello');
+}
