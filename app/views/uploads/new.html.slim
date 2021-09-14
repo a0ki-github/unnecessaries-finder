@@ -5,7 +5,7 @@ p アイコンをタップして写真をアップロード
 = form_with url: uploads_path, local: false, id: 'image_form' do |f|
   .form-group
     = f.file_field :room_image, accept: 'image/*', onchange: 'submitImage()'
-    = f.button :submit
+    = f.button :submit, id: 'submit_button', style: "visibility:hidden;"
   img#preview width="auto" height="500px"
 
 .result
