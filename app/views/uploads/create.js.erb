@@ -1,7 +1,7 @@
-document.querySelector(".headline").innerHTML = '診断結果'
+document.querySelector(".headline").innerHTML = '診断結果';
 <% if @detected_items.present? %>
   <%= render('judged_items', judged_items: @judged_items) %>
   <%= render('unregd_items', unregd_items: @unregd_items) %>
 <% else %>
-  document.querySelector(".judge").innerHTML = '<p>何も検出できませんでした、、、。<br>（写真を鮮明にしてみると解決するかもしれません）<p>'
+  document.querySelector(".judge").innerHTML = '<p>何も検出できませんでした、、、。<br>（写真を鮮明にしてみると解決するかもしれません）<p>';
 <% end %>
