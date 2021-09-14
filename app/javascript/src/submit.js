@@ -19,10 +19,11 @@ submitImage = () => {
   
   // 以下コードではなぜかcreate.js.erbを参照できずUnknownFormatエラーが発生。
   // const form = document.getElementById('image_form');
-  // xhr.send(formData);
+  // form.submit();
 
   // 以下コードではエラーは起きないがなぜかcreate.js.erbの内容がビューに反映されず。
   // const xhr = new XMLHttpRequest();
+  // const form = document.getElementById('image_form');
   // const formData = new FormData(form);
   // xhr.open("POST", "/uploads", true);
   // xhr.send(formData);
