@@ -1,10 +1,10 @@
 submitImage = () => {
   // プレビュー機能
-  const target = document.querySelector("#room_image")
+  const target = document.querySelector("#room_image");
   const file = target.files[0];
   const reader = new FileReader();
   reader.onloadend = () => {
-    const preview = document.querySelector("#preview")
+    const preview = document.querySelector("#preview");
     
     if (preview) {
       preview.src = reader.result;
