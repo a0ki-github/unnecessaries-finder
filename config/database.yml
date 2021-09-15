@@ -51,6 +51,7 @@ test:
 #
 production:
   <<: *default
-  database: minihara_production
+  database: heroku_edbcf68f9daaafa
   username: <%= Rails.application.credentials.mysql[:username] %>
   password: <%= Rails.application.credentials.mysql[:password] %>
+  host: us-cdbr-east-04.cleardb.com
