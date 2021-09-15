@@ -51,5 +51,5 @@ test:
 production:
   <<: *default
   database: minihara_production
-  username: minihara
-  password: <%= ENV['MINIHARA_DATABASE_PASSWORD'] %>
+  username: <%= Rails.application.credentials.mysql[:username] %>
+  password: <%= Rails.application.credentials.mysql[:password] %>
