@@ -42,10 +42,11 @@ class UploadsController < ApplicationController
       @unregd_items = []
 
       @detected_items&.each do |detected_item|
-        if Item.exists?(name: detected_item)
+        if Item.find_by(name: detected_item)&.why_release.present?
           @judged_items << detected_item
         else
           @unregd_items << detected_item
+          Item.create(name: detected_item) unless Item.exists?(name: detected_item)
         end
       end
     else
