@@ -37,6 +37,23 @@ class UploadsController < ApplicationController
       # 検出されたオブジェクトの配列を作成
       @detected_items = JSON.parse(response.body)['responses'][0]["localizedObjectAnnotations"]&.map {|i| i['name']}
 
+      # 日本語に変換
+      api_key = Rails.application.credentials.gcp[:translation_api][:api_key]
+
+      body = {
+        q: @detected_items,
+        source: "en",
+        target: "ja"
+      }.to_json
+
+      response = Net::HTTP.post(
+        URI("https://translation.googleapis.com/language/translate/v2?key=#{api_key}"),
+        body,
+        headers
+      )
+
+      @detected_items = JSON.parse(response.body)['data']['translations']&.map {|i| i['translatedText']}
+
       # オブジェクト名称の登録有無による仕分け
       @judged_items = []
       @unregd_items = []
