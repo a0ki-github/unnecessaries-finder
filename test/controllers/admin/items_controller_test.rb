@@ -17,7 +17,7 @@ class Admin::ItemsControllerTest < ActionDispatch::IntegrationTest
 
   test "should create item" do
     assert_difference('Item.count') do
-      post admin_items_url, params: { item: {  } }
+      post admin_items_url, params: { item: { name: @item.name, why_release: @item.why_release } }
     end
 
     assert_redirected_to item_url(Item.last)
@@ -34,7 +34,7 @@ class Admin::ItemsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update item" do
-    patch admin_item_url(@item), params: { item: {  } }
+    patch admin_item_url(@item), params: { item: { name: @item.name, why_release: @item.why_release } }
     assert_redirected_to item_url(@item)
   end
 

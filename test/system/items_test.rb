@@ -14,6 +14,8 @@ class ItemsTest < ApplicationSystemTestCase
     visit items_url
     click_on "New Item"
 
+    fill_in "Name", with: @item.name
+    fill_in "Why release", with: @item.why_release
     click_on "Create Item"
 
     assert_text "Item was successfully created"
@@ -24,6 +26,8 @@ class ItemsTest < ApplicationSystemTestCase
     visit items_url
     click_on "Edit", match: :first
 
+    fill_in "Name", with: @item.name
+    fill_in "Why release", with: @item.why_release
     click_on "Update Item"
 
     assert_text "Item was successfully updated"

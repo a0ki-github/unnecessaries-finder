@@ -1,9 +1,15 @@
-= form_for @item do |f|
-  - if @item.errors.any?
+= form_with model: [:admin, item] do |f|
+  - if item.errors.any?
     #error_explanation
-      h2 = "#{pluralize(@item.errors.count, 'error')} prohibited this item from being saved:"
+      h2 = "#{pluralize(item.errors.count, 'error')} prohibited this item from being saved:"
       ul
-        - @item.errors.full_messages.each do |message|
+        - item.errors.full_messages.each do |message|
           li = message
 
+  .field
+    = f.label :name
+    = f.text_field :name
+  .field
+    = f.label :why_release
+    = f.text_area :why_release
   .actions = f.submit
