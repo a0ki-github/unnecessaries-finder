@@ -8,8 +8,10 @@
 
   .field
     = f.label :name
+    br
     = f.text_field :name
   .field
     = f.label :why_release
-    = f.text_area :why_release
+    br
+    = f.text_area :why_release, size: "100x5"
   .actions = f.submit
