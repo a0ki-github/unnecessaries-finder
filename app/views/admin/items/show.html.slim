@@ -1,0 +1,13 @@
+p#notice = notice
+
+p
+  strong Name:
+  = @item.name
+
+p
+  strong Why release:
+  = @item.why_release
+
+=> link_to 'Edit', edit_admin_item_path(@item)
+'|
+=< link_to 'Back', admin_items_path
