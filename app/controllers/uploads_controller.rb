@@ -35,7 +35,7 @@ class UploadsController < ApplicationController
 
     if response.code == '200'
       # 検出されたオブジェクトの配列を作成
-      @detected_items = JSON.parse(response.body)['responses'][0]["localizedObjectAnnotations"]&.map {|i| i['name']}
+      @detected_items = JSON.parse(response.body)['responses'][0]["localizedObjectAnnotations"]&.map {|i| i['name']}.uniq
 
       # 日本語に変換
       api_key = Rails.application.credentials.gcp[:translation_api][:api_key]

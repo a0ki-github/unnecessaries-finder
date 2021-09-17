@@ -1,9 +1,0 @@
-<% if unregd_items.present? %>
-  let li;
-
-  <% unregd_items.each do |unregd_item| %>
-    li = document.createElement("li");
-    li.innerHTML = "<%= unregd_item %>";
-    document.querySelector(".unregd").appendChild(li);
-  <% end %>
-<% end%>
