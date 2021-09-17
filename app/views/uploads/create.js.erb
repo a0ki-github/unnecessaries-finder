@@ -1,7 +1,8 @@
-document.querySelector(".headline").innerHTML = '診断結果';
+$("#result").remove();
+$("body").append("<%= j(render('result')) %>");
 <% if @detected_items.present? %>
-  <%= render('judged_items', judged_items: @judged_items) %>
-  <%= render('unregd_items', unregd_items: @unregd_items) %>
+  $("#result").append("<%= j(render('judged_items', judged_items: @judged_items)) %>");
+  $('#result').append("<%= j(render('unregd_items', unregd_items: @unregd_items)) %>");
 <% else %>
-  document.querySelector(".judge").innerHTML = '<p>何も検出できませんでした、、、。<br>（写真を鮮明にしてみると解決するかもしれません）<p>';
+  $("#result").append("<p>何も検出できませんでした、、、。<br>（写真を鮮明にしてみると解決するかもしれません）<p>")
 <% end %>
