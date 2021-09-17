@@ -4,5 +4,5 @@ $("body").append("<%= j(render('result')) %>");
   $("#result").append("<%= j(render('judged_items', judged_items: @judged_items)) %>");
   $('#result').append("<%= j(render('unregd_items', unregd_items: @unregd_items)) %>");
 <% else %>
-  document.querySelector(".judge").innerHTML = '<p>何も検出できませんでした、、、。<br>（写真を鮮明にしてみると解決するかもしれません）<p>';
+  $("#result").append("<p>何も検出できませんでした、、、。<br>（写真を鮮明にしてみると解決するかもしれません）<p>")
 <% end %>
