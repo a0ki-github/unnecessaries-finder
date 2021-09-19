@@ -1,7 +1,7 @@
-h1 タイトル
-p あなたの部屋の「実は要らないモノ」を診断できるアプリ
+h1 いらないモノ診断
+p.mb-5 あなたの部屋の「実はいらないモノ」を診断するアプリ
 
-p アイコンをタップして写真をアップロード
+p ↓部屋の写真をアップロードしてください
 = form_with url: uploads_path, local: false, id: 'image_form' do |f|
   .form-group
     = f.file_field :room_image, accept: 'image/*', onchange: 'submitImage()'

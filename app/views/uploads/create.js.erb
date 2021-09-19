@@ -1,5 +1,5 @@
 $("#result").remove();
-$("body").append("<%= j(render('result')) %>");
+$(".container").append("<%= j(render('result')) %>");
 <% if @detected_items.present? %>
   $("#result").append("<%= j(render('judged_items', judged_items: @judged_items)) %>");
   $('#result').append("<%= j(render('unregd_items', unregd_items: @unregd_items)) %>");
