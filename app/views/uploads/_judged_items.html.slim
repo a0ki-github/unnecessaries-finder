@@ -1,7 +1,7 @@
 - if judged_items.present?
   .judged_items.mb-4
     - judged_items.each do |judged_item|
-      .name
+      h4.name
         = judged_item
       .content
         = simple_format(Item.find_by(name: judged_item).why_release)

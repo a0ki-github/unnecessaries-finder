@@ -4,5 +4,6 @@ p.mb-5 あなたの部屋の「実はいらないモノ」が見つかるアプ�
 p ↓部屋の写真をアップロードしてください
 = form_with url: uploads_path, local: false, id: 'image_form' do |f|
   .form-group
+    = f.label :room_image, "here", class: "filelabel"
     = f.file_field :room_image, accept: 'image/*', onchange: 'submitImage()'
   img#preview width="100%" height="auto"
