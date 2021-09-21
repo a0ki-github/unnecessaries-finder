@@ -1,4 +1,4 @@
-$("#result").remove();
+$(".spinner-grow").remove();
 $(".container").append("<%= j(render('result')) %>");
 <% if @detected_items.present? %>
   $("#result").append("<%= j(render('judged_items', judged_items: @judged_items)) %>");
