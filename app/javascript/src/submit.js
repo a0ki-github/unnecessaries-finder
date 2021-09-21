@@ -2,7 +2,7 @@ submitImage = () => {
   // 初期化
 $("#result").remove();
 
-  // プレビュー機能
+  // 画像プレビュー
   const target = document.getElementById("room_image");
   const file = target.files[0];
   const reader = new FileReader();
@@ -13,19 +13,28 @@ $("#result").remove();
       preview.src = reader.result;
     }
   }
-  if (file) {    
+  if (file) {
     reader.readAsDataURL(file);
   }
 
-  // Loadingエフェクト
-  $(".container").append(
-    '<div class="spinner-grow text-success m-1" role="status"></div>\
-    <div class="spinner-grow text-danger m-1" role="status"></div>\
-    <div class="spinner-grow text-warning m-1" role="status"></div>\
-    <div class="spinner-grow text-info m-1" role="status"></div>'
+  // Loadingエフェクトの作成
+  $(".container").css({ 'opacity': '0.3' });
+  $("body").append('<div id="loading" class="text-center"></div>')
+  $("#loading").append(
+    '<div class="spinner-grow text-success" role="status"></div>\
+    <div class="spinner-grow text-danger" role="status"></div>\
+    <div class="spinner-grow text-warning" role="status"></div>\
+    <div class="spinner-grow text-info" role="status"></div>'
   );
+  $("#loading").css({
+    'position': 'fixed',
+    'top': '50%',
+    'left': '50%',
+    'transform': 'translateY(-50%) translateX(-50%)',
+    '-webkit- transform': 'translateY(-50%) translateX(-50%)'
+  });
 
-  // 画像送信機能
+  // フォーム送信
   const form = document.getElementById('image_form');
   const formData = new FormData(form);
   $.ajax({

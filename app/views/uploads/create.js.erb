@@ -1,4 +1,8 @@
-$(".spinner-grow").remove();
+// Loadingエフェクトの解除
+$(".container").css({ 'opacity': '1' });
+$("#loading").remove();
+
+// 結果表示
 $(".container").append("<%= j(render('result')) %>");
 <% if @detected_items.present? %>
   $("#result").append("<%= j(render('judged_items', judged_items: @judged_items)) %>");
@@ -6,3 +10,6 @@ $(".container").append("<%= j(render('result')) %>");
 <% else %>
   $("#result").append("<p>何も検出できませんでした、、、。<br>（写真を鮮明にしてみると解決するかもしれません）<p>")
 <% end %>
+
+// 結果部分までスクロール
+$("html,body").animate({scrollTop:$("#result").offset().top});
