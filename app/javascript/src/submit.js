@@ -15,24 +15,17 @@ $("#result").remove();
   }
   if (file) {
     reader.readAsDataURL(file);
-  }
 
-  // Loadingエフェクトの作成
-  $(".container").css({ 'opacity': '0.3' });
-  $("body").append('<div id="loading" class="text-center"></div>')
-  $("#loading").append(
-    '<div class="spinner-grow text-success" role="status"></div>\
-    <div class="spinner-grow text-danger" role="status"></div>\
-    <div class="spinner-grow text-warning" role="status"></div>\
-    <div class="spinner-grow text-info" role="status"></div>'
-  );
-  $("#loading").css({
-    'position': 'fixed',
-    'top': '50%',
-    'left': '50%',
-    'transform': 'translateY(-50%) translateX(-50%)',
-    '-webkit- transform': 'translateY(-50%) translateX(-50%)'
-  });
+    // Loadingエフェクトの作成
+    $(".container").css({ 'opacity': '0.3' });
+    $("body").append('<div id="loading"></div>')
+    $("#loading").append(
+      '<div class="spinner-grow text-success" role="status"></div>\
+      <div class="spinner-grow text-danger" role="status"></div>\
+      <div class="spinner-grow text-warning" role="status"></div>\
+      <div class="spinner-grow text-info" role="status"></div>'
+    );
+  }
 
   // フォーム送信
   const form = document.getElementById('image_form');
