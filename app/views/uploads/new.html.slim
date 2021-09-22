@@ -2,8 +2,9 @@ h1 いらないモノ診断
 p.mb-5 あなたの部屋の「実はいらないモノ」が見つかるアプリ
 
 p ↓部屋の写真をアップロードしてください
-= form_with url: uploads_path, local: false, id: 'image_form' do |f|
+= form_with url: uploads_path, local: false, id: 'image_form', class: 'text-center' do |f|
   .form-group
-    = f.label :room_image, "here", class: "filelabel"
+    = f.label :room_image
+      .fa.fa-camera.fa-4x.center-block
     = f.file_field :room_image, accept: 'image/*', onchange: 'submitImage()', style: "display: none;"
   img#preview width="100%" height="auto"
