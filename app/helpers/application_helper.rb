@@ -15,4 +15,8 @@ module ApplicationHelper
       }
     }
   end
+
+  def admin?
+    request.url.include?('/admin')
+  end
 end
