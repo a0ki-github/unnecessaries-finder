@@ -3,8 +3,16 @@ a {
   color: black;
 }
 
+.container{
+  padding-bottom: 70px;
+}
+
 footer{
-  position: absolute;
+  position: fixed;
   bottom: 0;
   width: 100%;
+  font-size: x-small;
+  a {
+    color: cadetblue;
+  }
 }
