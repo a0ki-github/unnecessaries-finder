@@ -3,7 +3,7 @@ p.mb-5 あなたの部屋の「実はいらないモノ」が見つかるアプ�
 
 = form_with url: uploads_path, local: false, id: 'image_form', class: 'text-center' do |f|
   .form-group
-    = f.label :room_image, class: "image_label"
+    = f.label :room_image, class: "image_label", style: "cursor: pointer;"
       .fa.fa-camera.fa-3x
       p タップして部屋の写真をアップロード
     = f.file_field :room_image, accept: 'image/*', onchange: 'submitImage()', style: "display: none;"
