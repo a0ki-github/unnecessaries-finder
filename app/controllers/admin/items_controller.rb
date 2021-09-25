@@ -1,4 +1,4 @@
-class Admin::ItemsController < ApplicationController
+class Admin::ItemsController < Admin::BaseController
   layout 'admin'
   before_action :set_item, only: %i[ show edit update destroy ]
 
