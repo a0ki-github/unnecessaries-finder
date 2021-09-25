@@ -13,4 +13,9 @@ class Admin::SessionsController < Admin::BaseController
       render :new
     end
   end
+
+  def destroy
+    session.delete :admin_password
+    redirect_to admin_login_path, success: 'ログアウトしました'
+  end
 end

@@ -7,6 +7,7 @@ html
     = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
   body
+    = render 'layouts/header'
     .container.center-block
       = render 'shared/flash_message'
       = yield
