@@ -9,6 +9,7 @@ Rails.application.routes.draw do
     post '/login', to: 'sessions#create'
     delete '/logout', to: 'sessions#destroy'
   end
-  resources :uploads, only: %i(new create show)
+  resource :feedbacks, only: %i(new create)
+  resources :uploads, only: %i(new create)
   root 'uploads#new'
 end
