@@ -1,0 +1,6 @@
+= form_with url: admin_login_path, scope: :session do |f|
+  .form-group
+    = f.label :admin_password
+    = f.password_field :admin_password, class: 'form-control'
+
+  = f.submit '送信', class: 'btn btn-primary'
