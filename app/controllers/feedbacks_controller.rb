@@ -8,13 +8,14 @@ class FeedbacksController < ApplicationController
   def create
     @feedback = Feedback.new(feedback_params)
     if @feedback.save
-      redirect_to feedbacks_path, success: '問い合わせが送信されました'
+      redirect_to feedback_path(uuid: @feedback.uuid), success: '問い合わせが送信されました'
     else
       render :new
     end
   end
 
   def show
+    @feedback = Feedback.find_by(uuid: params[:uuid])
   end
 
   private
