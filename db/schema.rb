@@ -13,7 +13,7 @@
 ActiveRecord::Schema.define(version: 2021_09_25_214735) do
 
   create_table "feedbacks", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
-    t.integer "kind", default: 0, null: false
+    t.integer "kind", null: false
     t.text "content", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
