@@ -3,4 +3,6 @@ class Feedback < ApplicationRecord
 
   validates :kind, presence: true
   validates :content, presence: true, length: { maximum: 65535 }
+
+  before_create -> { self.uuid = SecureRandom.uuid }
 end
