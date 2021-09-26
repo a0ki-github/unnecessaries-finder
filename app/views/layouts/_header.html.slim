@@ -2,6 +2,6 @@ header.bg-light.p-3.shadow
   span.small あなたの「実はいらない」が見つかるアプリ
   h1#site-title いらないモノ診断
 
-  - if login_for_admin?
+  - if admin_url? && login_for_admin?
     .text-end
       = link_to '管理者ログアウト', admin_logout_path, method: :delete
