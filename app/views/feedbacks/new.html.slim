@@ -1,2 +1,10 @@
-h1 Feedbacks#new
-p Find me in app/views/feedbacks/new.html.slim
+h1 お問い合わせ
+br
+= form_with model: @feedback do |f|
+  .form-group
+    = f.label :kind, 'お問い合わせの種類'
+    = f.select :kind, Feedback.kinds, {include_blank: true}, {class: 'form-control'}
+  .form-group
+    = f.label :content, '内容'
+    = f.text_area :content, class: 'form-control', rows: 10
+  = f.submit '送信', class: 'btn btn-primary mt-2'
