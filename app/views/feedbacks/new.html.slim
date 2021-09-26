@@ -4,7 +4,11 @@ br
   .form-group
     = f.label :kind, 'お問い合わせの種類'
     = f.select :kind, Feedback.kinds.keys, {include_blank: true}, {class: 'form-control'}
+    - if @feedback.errors.messages.include?(:kind)
+      .form-text.text-danger 問い合わせの種類を選択してください
   .form-group
     = f.label :content, '内容'
     = f.text_area :content, class: 'form-control', rows: 10
+    - if @feedback.errors.messages.include?(:content)
+      .form-text.text-danger 内容を65,535文字以内で記入してください
   = f.submit '送信', class: 'btn btn-primary mt-2'

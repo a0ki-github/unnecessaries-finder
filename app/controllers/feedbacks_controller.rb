@@ -10,7 +10,6 @@ class FeedbacksController < ApplicationController
     if @feedback.save
       redirect_to feedbacks_path, success: '問い合わせが送信されました'
     else
-      flash.now[:danger] = '問い合わせが送信できませんでした'
       render :new
     end
   end
