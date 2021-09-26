@@ -3,7 +3,7 @@ br
 = form_with model: @feedback do |f|
   .form-group
     = f.label :kind, 'お問い合わせの種類'
-    = f.select :kind, Feedback.kinds, {include_blank: true}, {class: 'form-control'}
+    = f.select :kind, Feedback.kinds.keys, {include_blank: true}, {class: 'form-control'}
   .form-group
     = f.label :content, '内容'
     = f.text_area :content, class: 'form-control', rows: 10
