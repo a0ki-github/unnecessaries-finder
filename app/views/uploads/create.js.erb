@@ -14,4 +14,4 @@ $(".container").append("<%= j(render('result')) %>");
 <% end %>
 
 // 結果部分までスクロール
-$("html,body").animate({scrollTop:$("#result").offset().top});
+$("html,body").animate({scrollTop:$("#result").offset().top - $("header").outerHeight()} );
