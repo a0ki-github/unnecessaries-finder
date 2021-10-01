@@ -11,7 +11,9 @@ header {
   position: fixed;
   top: 0;
   width: 100%;
-  color: cadetblue;
+  a {
+    color: cadetblue;
+  }
 }
 
 footer{
@@ -22,4 +24,8 @@ footer{
   a {
     color: cadetblue;
   }
+}
+
+@media (max-width: 670px) {
+  .header_logo { display: none; }
 }
