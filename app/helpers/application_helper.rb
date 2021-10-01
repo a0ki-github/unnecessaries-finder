@@ -7,7 +7,7 @@ module ApplicationHelper
       reverse: true,
       icon: [
         { href: image_url('logo.png'), type: 'image/png' },
-        { href: image_url('logo.png'), rel: 'apple-touch-icon-precomposed', sizes: '32x32', type: 'image/png' }
+        { href: image_url('logo.png'), rel: 'apple-touch-icon', sizes: '180x180', type: 'image/png' }
       ],
       og: {
         site_name: :site,
