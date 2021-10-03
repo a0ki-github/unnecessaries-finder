@@ -1,6 +1,9 @@
 .text-center
   h1.my-5 フィードバックを頂きありがとうございました。
-  p 本サービスのアップデート情報は開発者のTwitterアカウント（@xxxx）からご確認頂けます。
+  p
+    | 本サービスのアップデート情報は開発者のTwitterアカウント
+    = link_to '@aoki_engineer', 'https://twitter.com/aoki_engineer', target: '_blank', rel: 'nofollow'
+    | からご確認頂けます。
   = link_to 'トップへ戻る', root_path, class: 'btn btn-primary'
 
 .mt-5
