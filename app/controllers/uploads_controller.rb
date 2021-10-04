@@ -7,8 +7,9 @@ class UploadsController < ApplicationController
   end
 
   def create
-    base64_image = Base64.strict_encode64(params[:room_image].read)
-    api_key = Rails.application.credentials.gcp[:vision_api][:api_key]
+    room_image = Base64.strict_encode64(params[:room_image].read)
+    vision_api_key = Rails.application.credentials.gcp[:vision_api][:api_key]
+    vision_api_url = URI("https://vision.googleapis.com/v1/images:annotate?key=#{vision_api_key}")
     headers = { "Content-Type" => "application/json" }
 
     body = {
@@ -21,17 +22,13 @@ class UploadsController < ApplicationController
             }
           ],
           image: {
-            content: base64_image
+            content: room_image
           }
         }
       ]
     }.to_json
 
-    response = Net::HTTP.post(
-      URI("https://vision.googleapis.com/v1/images:annotate?key=#{api_key}"),
-      body,
-      headers
-    )
+    response = Net::HTTP.post(vision_api_url, body, headers)
 
     if response.code == '200'
       # 検出されたオブジェクトの配列を作成
@@ -39,7 +36,8 @@ class UploadsController < ApplicationController
 
       # 日本語に変換
       if @detected_items.present?
-        api_key = Rails.application.credentials.gcp[:translation_api][:api_key]
+        translation_api_key = Rails.application.credentials.gcp[:translation_api][:api_key]
+        translation_api_url = URI("https://translation.googleapis.com/language/translate/v2?key=#{translation_api_key}")
 
         body = {
           q: @detected_items,
@@ -48,7 +46,7 @@ class UploadsController < ApplicationController
         }.to_json
 
         response = Net::HTTP.post(
-          URI("https://translation.googleapis.com/language/translate/v2?key=#{api_key}"),
+          translation_api_url,
           body,
           headers
         )
