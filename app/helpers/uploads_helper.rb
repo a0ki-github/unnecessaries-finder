@@ -24,7 +24,7 @@ module UploadsHelper
   
     if response_from_vision_api.code == '200'
       detected_items = JSON.parse(response_from_vision_api.body)['responses'][0]["localizedObjectAnnotations"]&.map {|i| i['name']}&.uniq
-      return translate_into_ja(detected_items)
+      detected_items.present? ? translate_into_ja(detected_items) : nil
     else
       flash.now[:danger] = '申し訳ございません。エラーが発生しておりますのでアップデートをお待ちください。'
       render :new
@@ -38,7 +38,7 @@ module UploadsHelper
     body = { q: detected_items, source: "en", target: "ja" }.to_json
   
     response_from_transition_api = Net::HTTP.post(translation_api_url, body, headers)
-    return JSON.parse(response_from_transition_api.body)['data']['translations']&.map {|i| i['translatedText']}
+    JSON.parse(response_from_transition_api.body)['data']['translations']&.map {|i| i['translatedText']}
   end
 
   def twitter_share_url(detected_items)
