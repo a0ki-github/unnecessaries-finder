@@ -1,6 +1,7 @@
 require 'net/http'
 
 class UploadsController < ApplicationController
+  include UploadsHelper
   before_action :require_image, only: :create
 
   def new
@@ -8,52 +9,11 @@ class UploadsController < ApplicationController
 
   def create
     room_image = Base64.strict_encode64(params[:room_image].read)
-    vision_api_key = Rails.application.credentials.gcp[:vision_api][:api_key]
-    vision_api_url = URI("https://vision.googleapis.com/v1/images:annotate?key=#{vision_api_key}")
-    headers = { "Content-Type" => "application/json" }
 
-    body = {
-      requests: [
-        {
-          features: [
-            {
-              maxResults: 10,
-              type: "OBJECT_LOCALIZATION"
-            }
-          ],
-          image: {
-            content: room_image
-          }
-        }
-      ]
-    }.to_json
-
-    response_from_vision_api = Net::HTTP.post(vision_api_url, body, headers)
-
-    if response_from_vision_api.code == '200'
-      # 検出されたオブジェクトの配列を作成
-      @detected_items = JSON.parse(response_from_vision_api.body)['responses'][0]["localizedObjectAnnotations"]&.map {|i| i['name']}&.uniq
-
-      # 日本語に変換
-      if @detected_items.present?
-        translation_api_key = Rails.application.credentials.gcp[:translation_api][:api_key]
-        translation_api_url = URI("https://translation.googleapis.com/language/translate/v2?key=#{translation_api_key}")
-
-        body = {
-          q: @detected_items,
-          source: "en",
-          target: "ja"
-        }.to_json
-
-        response_from_transition_api = Net::HTTP.post(translation_api_url, body, headers)
-
-        @detected_items = JSON.parse(response_from_transition_api.body)['data']['translations']&.map {|i| i['translatedText']}
-      end
-
-      # オブジェクト名称の登録有無による仕分け
+    if @detected_items = detect_items(room_image)
       @judged_items = []
       @unregd_items = []
-
+  
       @detected_items&.each do |detected_item|
         if Item.find_by(name: detected_item)&.why_release.present?
           @judged_items << detected_item
@@ -63,7 +23,7 @@ class UploadsController < ApplicationController
         end
       end
     else
-      flash.now[:danger] = '申し訳ございません。エラーが発生しておりますのでアップデートをお待ちください。'
+      flash.now[:danger] = 'APIリクエストが失敗しています'
       render :new
     end
   end

@@ -34,6 +34,7 @@ module UploadsHelper
   def translate_into_ja(detected_items)
     translation_api_key = Rails.application.credentials.gcp[:translation_api][:api_key]
     translation_api_url = URI("https://translation.googleapis.com/language/translate/v2?key=#{translation_api_key}")
+    headers = { "Content-Type" => "application/json" }
     body = { q: detected_items, source: "en", target: "ja" }.to_json
   
     response_from_transition_api = Net::HTTP.post(translation_api_url, body, headers)
