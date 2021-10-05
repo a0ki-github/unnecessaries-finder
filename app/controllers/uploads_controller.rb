@@ -10,21 +10,17 @@ class UploadsController < ApplicationController
   def create
     room_image = Base64.strict_encode64(params[:room_image].read)
 
-    if @detected_items = detect_items(room_image)
-      @judged_items = []
-      @unregd_items = []
-  
-      @detected_items&.each do |detected_item|
-        if Item.find_by(name: detected_item)&.why_release.present?
-          @judged_items << detected_item
-        else
-          @unregd_items << detected_item
-          Item.create(name: detected_item) unless Item.exists?(name: detected_item)
-        end
+    @detected_items = detect_items(room_image)
+
+    @judged_items = []
+    @unregd_items = []
+    @detected_items&.each do |detected_item|
+      if Item.find_by(name: detected_item)&.why_release.present?
+        @judged_items << detected_item
+      else
+        @unregd_items << detected_item
+        Item.create(name: detected_item) unless Item.exists?(name: detected_item)
       end
-    else
-      flash.now[:danger] = 'APIリクエストが失敗しています'
-      render :new
     end
   end
 
