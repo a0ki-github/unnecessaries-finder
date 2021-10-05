@@ -28,11 +28,11 @@ class UploadsController < ApplicationController
       ]
     }.to_json
 
-    response = Net::HTTP.post(vision_api_url, body, headers)
+    response_from_vision_api = Net::HTTP.post(vision_api_url, body, headers)
 
-    if response.code == '200'
+    if response_from_vision_api.code == '200'
       # 検出されたオブジェクトの配列を作成
-      @detected_items = JSON.parse(response.body)['responses'][0]["localizedObjectAnnotations"]&.map {|i| i['name']}&.uniq
+      @detected_items = JSON.parse(response_from_vision_api.body)['responses'][0]["localizedObjectAnnotations"]&.map {|i| i['name']}&.uniq
 
       # 日本語に変換
       if @detected_items.present?
@@ -45,13 +45,9 @@ class UploadsController < ApplicationController
           target: "ja"
         }.to_json
 
-        response = Net::HTTP.post(
-          translation_api_url,
-          body,
-          headers
-        )
+        response_from_transition_api = Net::HTTP.post(translation_api_url, body, headers)
 
-        @detected_items = JSON.parse(response.body)['data']['translations']&.map {|i| i['translatedText']}
+        @detected_items = JSON.parse(response_from_transition_api.body)['data']['translations']&.map {|i| i['translatedText']}
       end
 
       # オブジェクト名称の登録有無による仕分け
@@ -67,7 +63,7 @@ class UploadsController < ApplicationController
         end
       end
     else
-      flash.now[:danger] = 'APIリクエストが失敗しています'
+      flash.now[:danger] = '申し訳ございません。エラーが発生しておりますのでアップデートをお待ちください。'
       render :new
     end
   end
