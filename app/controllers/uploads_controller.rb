@@ -9,8 +9,10 @@ class UploadsController < ApplicationController
   def create
     room_image = Base64.strict_encode64(params[:room_image].read)
 
+    # アップロードされた画像を解析
     @detected_items = detect_items(room_image)
 
+    # 検出したモノを登録有無によって仕分け
     @judged_items = []; @unregd_items = []
     @detected_items&.each do |detected_item|
       if Item.find_by(name: detected_item)&.why_release.present?
