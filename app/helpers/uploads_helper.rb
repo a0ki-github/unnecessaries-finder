@@ -26,7 +26,7 @@ module UploadsHelper
       detected_items = JSON.parse(response_from_vision_api.body)['responses'][0]["localizedObjectAnnotations"]&.map {|i| i['name']}&.uniq
       detected_items.present? ? translate_into_ja(detected_items) : nil
     else
-      flash.now[:danger] = '申し訳ございません。エラーが発生しておりますのでアップデートをお待ちください。'
+      flash.now[:danger] = '予期せぬエラーが発生しておりますので申し訳ありませんがアップデートをお待ちください。'
       render :new
     end
   end

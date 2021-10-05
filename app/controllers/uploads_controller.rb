@@ -11,8 +11,7 @@ class UploadsController < ApplicationController
 
     @detected_items = detect_items(room_image)
 
-    @judged_items = []
-    @unregd_items = []
+    @judged_items = []; @unregd_items = []
     @detected_items&.each do |detected_item|
       if Item.find_by(name: detected_item)&.why_release.present?
         @judged_items << detected_item
