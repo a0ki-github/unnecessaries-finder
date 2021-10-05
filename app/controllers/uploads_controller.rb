@@ -2,7 +2,6 @@ require 'net/http'
 
 class UploadsController < ApplicationController
   include UploadsHelper
-  before_action :require_image, only: :create
 
   def new
   end
@@ -21,15 +20,6 @@ class UploadsController < ApplicationController
         @unregd_items << detected_item
         Item.create(name: detected_item) unless Item.exists?(name: detected_item)
       end
-    end
-  end
-
-  private
-
-  def require_image
-    if params[:room_image].nil?
-      flash.now[:danger] = '画像を登録してください'
-      render :new
     end
   end
 end
