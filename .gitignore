@@ -75,5 +75,4 @@ yarn-debug.log*
 /yarn-error.log
 yarn-debug.log*
 .yarn-integrity
-/production_db_backup.sql
-
+production_db_backup.sql
