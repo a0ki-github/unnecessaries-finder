@@ -4,10 +4,10 @@ $("#loading").remove();
 
 // 結果表示
 $(".container").append("<%= j(render('result')) %>");
-<% if @detected_items.present? %>
-  $("#result").append("<%= j(render('judged_items', judged_items: @judged_items)) %>");
-  $("#result").append("<%= j(render('unregd_items', unregd_items: @unregd_items)) %>");
-  $("#result").append("<%= j(render('twitter_share', detected_items: @detected_items)) %>");
+<% if @room_image.detected_items.present? %>
+  $("#result").append("<%= j(render('regd_items', regd_items: @room_image.regd_items)) %>");
+  $("#result").append("<%= j(render('unregd_items', unregd_items: @room_image.unregd_items)) %>");
+  $("#result").append("<%= j(render('twitter_share', detected_items: @room_image.detected_items)) %>");
   $('#result').append("<%= j(render('how_to_release')) %>");
 <% else %>
   $("#result").append("<p>何も検出できませんでした、、、。<br>（写真を鮮明にしてみると解決するかもしれません）<p>")
