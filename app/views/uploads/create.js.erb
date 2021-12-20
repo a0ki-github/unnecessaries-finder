@@ -3,9 +3,7 @@ $(".container").css({ 'opacity': '1' });
 $("#loading").remove();
 
 // 結果表示
-$(".container").append("<%= j(render(partial: 'result_wrapper', locals: { regd_items: @room_image.regd_items,
-                                                                          unregd_items: @room_image.unregd_items,
-                                                                          detected_items: @room_image.detected_items }))%>");
+$(".container").append("<%= j(render('result_wrapper', items: @items))%>");
 
 // 結果部分までスクロール
 $("html,body").animate({scrollTop:$("#result").offset().top - $("header").outerHeight()} );

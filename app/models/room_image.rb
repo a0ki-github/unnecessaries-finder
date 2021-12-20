@@ -2,7 +2,7 @@ require 'net/http'
 
 class RoomImage
   include ActiveModel::Model
-  attr_accessor :base64_encoded, :detected_items, :regd_items, :unregd_items
+  attr_accessor :base64_encoded, :detected_items
 
   def save
     detect && translate && classify
@@ -58,15 +58,8 @@ class RoomImage
   end
 
   def classify
-    @regd_items, @unregd_items = [], []
-    @detected_items&.each do |detected_item|
-      if Item.filled.find_by(name: detected_item)
-        @regd_items << detected_item
-      else
-        @unregd_items << detected_item
-        Item.create(name: detected_item)
-      end
-    end
+    @detected_items.each {|item| Item.find_or_create_by(name: item)}
+
     true
   end
 end

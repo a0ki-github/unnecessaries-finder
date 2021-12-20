@@ -1,9 +1,0 @@
-#regd_items.mb-4
-  - if regd_items.present?
-    - regd_items.each do |regd_item|
-      h4.name
-        = regd_item
-      .content
-        = simple_format(Item.find_by(name: regd_item).why_release)
-  - else
-    | 今回は判断できるモノがありませんでした。

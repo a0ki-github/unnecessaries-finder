@@ -2,14 +2,10 @@
   .row.row-cols-1.row-cols-md-2
     .col.m-auto
       = render 'result'
-      - if @room_image.detected_items.present?
-        = render 'regd_items', regd_items: regd_items
-        = render 'unregd_items', unregd_items: unregd_items
-        = render 'twitter_share', detected_items: detected_items
+      - if items.present?
+        = render 'items', items: items
+        = render 'twitter_share', items: items
         = render 'how_to_release'
       - else
-        p
-          | 何も検出できませんでした、、、。
-          br
-          | （写真を鮮明にしてみると解決することがあります）
+        p 今回は特に見つかりませんでした。
 

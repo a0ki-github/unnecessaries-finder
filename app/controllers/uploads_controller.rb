@@ -4,6 +4,8 @@ class UploadsController < ApplicationController
 
   def create
     @room_image = RoomImage.new(base64_encoded: Base64.strict_encode64(params[:room_image].read))
-    @room_image.save
+    if @room_image.save
+      @items = Item.filled.detected(@room_image.detected_items)
+    end
   end
 end
