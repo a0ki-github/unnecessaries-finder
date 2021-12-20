@@ -1,4 +1,6 @@
 class UploadsController < ApplicationController
+  after_action :register_items, only: :create
+
   def new
   end
 
@@ -7,5 +9,11 @@ class UploadsController < ApplicationController
     if @room_image.save
       @items = Item.filled.detected(@room_image.detected_items)
     end
+  end
+
+  private
+
+  def register_items
+    @room_image.detected_items.each {|item| Item.find_or_create_by(name: item) }
   end
 end

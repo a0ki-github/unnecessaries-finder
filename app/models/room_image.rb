@@ -5,7 +5,7 @@ class RoomImage
   attr_accessor :base64_encoded, :detected_items
 
   def save
-    detect && translate && classify
+    detect && translate
   end
 
   private
@@ -55,11 +55,5 @@ class RoomImage
     end
 
     false
-  end
-
-  def classify
-    @detected_items.each {|item| Item.find_or_create_by(name: item)}
-
-    true
   end
 end
