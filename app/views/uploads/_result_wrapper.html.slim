@@ -1,0 +1,12 @@
+= render 'result'
+- if @room_image.detected_items.present?
+  = render 'regd_items', regd_items: regd_items
+  = render 'unregd_items', unregd_items: unregd_items
+  = render 'twitter_share', detected_items: detected_items
+  = render 'how_to_release'
+- else
+  p
+    | 何も検出できませんでした、、、。
+    br
+    | （写真を鮮明にしてみると解決することがあります）
+
