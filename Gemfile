@@ -61,3 +61,4 @@ gem 'html2slim'
 gem 'meta-tags'
 gem 'slim-rails'
 
+gem "tailwindcss-rails", "~> 2.0"
