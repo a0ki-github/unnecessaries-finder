@@ -1,6 +1,6 @@
 submitImage = () => {
   // 初期化
-$("#result").remove();
+$("#result-wrapper").remove();
 
   // 画像プレビュー
   const target = document.getElementById("room_image");

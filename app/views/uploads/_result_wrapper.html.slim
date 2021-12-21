@@ -1,0 +1,11 @@
+#result-wrapper
+  .row.row-cols-1.row-cols-md-2
+    .col.m-auto
+      = render 'result'
+      - if items.present?
+        = render 'items', items: items
+        = render 'twitter_share', items: items
+        = render 'how_to_release'
+      - else
+        p 今回は特に見つかりませんでした。
+
