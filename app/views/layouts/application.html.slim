@@ -16,9 +16,9 @@ html
       gtag('js', new Date());
       gtag('config', 'G-H0QBK9JK5E');
 
-  body
+  body.bg-slate-50
     = render 'layouts/header'
-    .container
+    .container.mx-auto.py-28.text-neutral-700
       = render 'shared/flash_message'
       = yield
     = render 'layouts/footer'

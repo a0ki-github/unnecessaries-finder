@@ -1,8 +1,8 @@
-header.bg-light.p-3.shadow
+header.fixed.w-full.p-4.bg-slate-50.shadow-xl.text-cyan-600
   = link_to root_path, class: 'd-flex flex-row'
     .title-copy
-      span.small あなたの「実はいらない」が見つかるアプリ
-      h1#site-title いらないモノ診断
+      .text-sm あなたの「実はいらない」が見つかるアプリ
+      .font-bold.text-4xl いらないモノ診断
 
   - if admin_url? && login_for_admin?
     .text-end
