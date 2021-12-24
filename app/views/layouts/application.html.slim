@@ -5,6 +5,7 @@ html
     = csrf_meta_tags
     = csp_meta_tag
     = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = stylesheet_link_tag 'tailwind', 'inter-font', 'data-turbo-track': 'reload'
     = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
     
     / Global site tag (gtag.js) - Google Analytics
@@ -15,9 +16,9 @@ html
       gtag('js', new Date());
       gtag('config', 'G-H0QBK9JK5E');
 
-  body
+  body.bg-slate-50
     = render 'layouts/header'
-    .container
+    .container.mx-auto.py-28.px-4.text-neutral-700.break-words
       = render 'shared/flash_message'
       = yield
     = render 'layouts/footer'
