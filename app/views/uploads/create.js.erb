@@ -6,5 +6,5 @@ $("#loading").remove();
 $(".container").append("<%= j(render('result_wrapper', items: @items))%>");
 
 // 結果部分までスクロール
-$("html,body").animate({scrollTop:$("#result").offset().top - $("header").outerHeight()} );
+$("html,body").animate({scrollTop:$("#result-wrapper").offset().top - $("header").outerHeight()} );
 
