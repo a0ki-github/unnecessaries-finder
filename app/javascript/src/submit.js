@@ -1,6 +1,6 @@
 submitImage = () => {
   // 初期化
-$("#result-wrapper").remove();
+  $("#result-wrapper").remove();
 
   // 画像プレビュー
   const target = document.getElementById("room_image");
@@ -31,14 +31,16 @@ $("#result-wrapper").remove();
   }
 
   // フォーム送信
-  const form = document.getElementById('image_form');
-  const formData = new FormData(form);
-  $.ajax({
-    url: form.action,
-    type: form.method,
-    data: formData,
-    processData: false,
-    contentType: false,
-    cache: false
-  });
+  if (file) {
+    const form = document.getElementById('image_form');
+    const formData = new FormData(form);
+    $.ajax({
+      url: form.action,
+      type: form.method,
+      data: formData,
+      processData: false,
+      contentType: false,
+      cache: false
+    });
+  }
 }
