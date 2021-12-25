@@ -42,6 +42,8 @@ class RoomImage
   end
 
   def translate
+    return true if @detected_items.nil?
+
     api_key = Rails.application.credentials.gcp[:translation_api][:api_key]
     api_url = URI("https://translation.googleapis.com/language/translate/v2?key=#{api_key}")
     headers = { "Content-Type" => "application/json" }
