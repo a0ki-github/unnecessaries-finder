@@ -1,5 +1,5 @@
 # いらないモノ診断
-[アプリページ](https://unnecessaries-finder.herokuapp.com/)
+[アプリページ](https://www.unnecessaries-finder.com)
 
 ## サービス概要
 部屋の写真をアップロードするだけで\
