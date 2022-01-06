@@ -1,8 +1,8 @@
 module ApplicationHelper
   def default_meta_tags
     {
-      site: 'いらないモノ診断',
-      description: '「実はいらないモノ」が見つかるアプリ',
+      site: 'いらないもの診断',
+      description: '「実はいらないもの」が見つかるアプリ',
       charset: 'utf-8',
       reverse: true,
       icon: [
@@ -13,7 +13,7 @@ module ApplicationHelper
         site_name: :site,
         title: :site,
         type: 'website',
-        description: '「実はいらないモノ」が見つかるアプリ',
+        description: '「実はいらないもの」が見つかるアプリ',
         url: request.url,
         image: image_url('room.jpg'),
         locale: 'ja_JP'
@@ -36,7 +36,7 @@ module ApplicationHelper
   def twitter_share_url
     link = request.protocol + request.host + "%0a"
     sentence = "いらないものが見つかりました。%0a"
-    hashtags = "いらないモノ診断,ミニマリスト"
+    hashtags = "いらないもの診断,ミニマリスト"
 
     return "https://twitter.com/share?text=#{sentence}&url=#{link}&hashtags=#{hashtags}"
   end
