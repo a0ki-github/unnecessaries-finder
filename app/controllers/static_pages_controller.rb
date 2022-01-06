@@ -6,4 +6,8 @@ class StaticPagesController < ApplicationController
   def privacy_policy
     set_meta_tags title: 'プライバシーポリシー'
   end
+
+  def contact
+    set_meta_tags title: 'お問い合わせ'
+  end
 end
