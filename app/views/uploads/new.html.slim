@@ -2,6 +2,8 @@
   .form-group.text-center
     = f.label :room_image, class: "image_label", style: "cursor: pointer;"
       .fa.fa-camera.fa-3x
+      p 部屋の写真をアップロード
+      .text-xs.mt-1 ※ 保存はされないのでご安心ください。
     = f.file_field :room_image, accept: 'image/*', onchange: 'submitImage()', style: "display: none;"
   img#preview.lg:w-1/2.mx-auto width="100%" height="auto"
 
