@@ -28,3 +28,5 @@ SitemapGenerator::Sitemap.create do
   add privacy_policy_path, changefreq: 'never'
   add contact_path, changefreq: 'never'
 end
+
+SitemapGenerator::Sitemap.ping_search_engines(bing: 'https://www.bing.com/webmaster/ping.aspx?sitemap=%s')
