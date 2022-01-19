@@ -31,3 +31,7 @@
 
 ## トップ画面
 [![Image from Gyazo](https://i.gyazo.com/41cd5f9c1caa10d49f7711204a2101f4.png)](https://gyazo.com/41cd5f9c1caa10d49f7711204a2101f4)
+
+## データベースバックアップコマンド
+`mysqldump -h us-cdbr-east-04.cleardb.com -u b104f183417e94 --databases heroku_edbcf68f9daaafa --no-tablespaces --column-statistics=0 -p > production_db_backup.sql`
+
